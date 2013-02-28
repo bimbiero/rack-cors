@@ -27,7 +27,8 @@ module Rack
     end
 
     def call(env)
-      env['HTTP_ORIGIN'] = 'file://' if env['HTTP_ORIGIN'] == 'null'
+      #env['HTTP_ORIGIN'] = 'file://' if env['HTTP_ORIGIN'] == 'null'
+      env['HTTP_ORIGIN'] = '*' if env['HTTP_ORIGIN'] == 'null'
       env['HTTP_ORIGIN'] ||= env['HTTP_X_ORIGIN']
 
       cors_headers = nil
